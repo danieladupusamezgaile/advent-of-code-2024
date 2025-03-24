@@ -21,6 +21,16 @@ def isSafe(levels):
             return False
     return True
 
+def isSafeWith1Removed(levels):
+    if isSafe(levels): return True
+
+    for i in range(len(levels)):
+        newLevels = levels[:i] + levels[i+1:]
+        if isSafe(newLevels):
+            return True
+
+    return False
+
 if __name__ == "__main__":
     filename = os.path.join(os.path.dirname(__file__), "levels.txt")
     with open(filename, 'r') as file:
@@ -33,7 +43,7 @@ if __name__ == "__main__":
     # count safe reports
     count = 0
     for level in levels:
-        if isSafe(level):
+        if isSafeWith1Removed(level):
             count += 1
     
     print(count)

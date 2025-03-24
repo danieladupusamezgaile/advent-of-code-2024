@@ -12,6 +12,13 @@ import os
 # apart is 4; if you pair up a 9 with a 3, the distance
 # apart is 6.
 
+#Count how many times each number in the left list 
+# appears in the right list.
+# Multiply each number in the left list by its count in 
+# the right list.
+# Sum all these products to get the total similarity 
+# score.
+
 # read the file and return the numbers in two lists
 def readListsFromFile(filename):
     leftList = []
@@ -42,8 +49,22 @@ def totalDistance(leftList, rightList):
     
     return totalDistance
 
+def similarityScore(leftList, rightList):
+    similarityScore = 0
+
+    for num in leftList:
+        # count num of num's in right list
+        count = rightList.count(num)
+        # multiply num with count and add to score
+        similarityScore += num * count
+    
+    return similarityScore
+
+
 if __name__ == "__main__":
     filename = os.path.join(os.path.dirname(__file__), "lists.txt")
     leftList, rightList = readListsFromFile(filename)
     totalDistance = totalDistance(leftList, rightList)
     print(f"Total distance: {totalDistance}")
+    similarityScore = similarityScore(leftList, rightList)
+    print(f"Similarity score: {similarityScore}")

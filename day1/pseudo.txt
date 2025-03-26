@@ -1,0 +1,84 @@
+Type
+    fileName: alfa;
+    totalDistance: integer;
+    leftList: list of integer;
+    rightList: list of integer;
+    leftStored: list of integer;
+    rightStored: list of integer;
+
+totalDistance(leftList, rightList):
+    leftStored <- SORT(leftList)
+    rightStored <- SORT(rightList)
+
+    totalDistance <- 0
+
+
+FUNCTION totalDistance(leftList, rightList):
+    SORT leftList and store in leftSorted
+    SORT rightList and store in rightSorted
+
+    INITIALIZE totalDistance to 0
+
+    FOR each index i in range 0 to length of leftSorted:
+        SET leftNum to leftSorted[i]
+        SET rightNum to rightSorted[i]
+        COMPUTE distance as absolute difference between leftNum and rightNum
+        ADD distance to totalDistance
+
+    RETURN totalDistance
+
+
+
+
+
+
+
+
+
+
+
+
+FUNCTION readListsFromFile(filename):
+    INITIALIZE leftList as an empty list
+    INITIALIZE rightList as an empty list
+
+    OPEN file with filename
+        FOR each line in file:
+            SPLIT line into two numbers: left and right
+            CONVERT both numbers to integers
+            APPEND left to leftList
+            APPEND right to rightList
+    RETURN leftList, rightList
+
+FUNCTION totalDistance(leftList, rightList):
+    SORT leftList and store in leftSorted
+    SORT rightList and store in rightSorted
+
+    INITIALIZE totalDistance to 0
+
+    FOR each index i in range 0 to length of leftSorted:
+        SET leftNum to leftSorted[i]
+        SET rightNum to rightSorted[i]
+        COMPUTE distance as absolute difference between leftNum and rightNum
+        ADD distance to totalDistance
+
+    RETURN totalDistance
+
+FUNCTION similarityScore(leftList, rightList):
+    INITIALIZE similarityScore to 0
+
+    FOR each number num in leftList:
+        COUNT occurrences of num in rightList
+        MULTIPLY num by count and ADD to similarityScore
+
+    RETURN similarityScore
+
+MAIN:
+    SET filename to path of "lists.txt"
+    CALL readListsFromFile(filename) and store results in leftList and rightList
+
+    CALL totalDistance(leftList, rightList) and store in totalDistance
+    PRINT "Total distance: " + totalDistance
+
+    CALL similarityScore(leftList, rightList) and store in similarityScore
+    PRINT "Similarity score: " + similarityScore

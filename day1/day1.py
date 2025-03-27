@@ -1,4 +1,3 @@
-import os
 # Maybe the lists are only off by a small amount!
 # To find out, pair up the numbers and measure how far
 # apart they are. Pair up the smallest number in the left
@@ -62,7 +61,7 @@ def similarityScore(leftList, rightList):
 
 
 if __name__ == "__main__":
-    filename = os.path.join(os.path.dirname(__file__), "lists.txt")
+    filename = "lists.txt"
     leftList, rightList = readListsFromFile(filename)
     totalDistance = totalDistance(leftList, rightList)
     print(f"Total distance: {totalDistance}")
